@@ -122,7 +122,6 @@ func All() []gothememe.Theme {
 		themeDotGovInstance,
 		themeDraculaInstance,
 		themeDracula2Instance,
-		themeDraculaProInstance, // Manually added
 		themeDuckbonesInstance,
 		themeDuotoneDarkInstance,
 		themeDuskfoxInstance,
@@ -1161,8 +1160,6 @@ var (
 	ThemeDracula gothememe.Theme = themeDraculaInstance
 	// ThemeDracula2 is the Dracula theme.
 	ThemeDracula2 gothememe.Theme = themeDracula2Instance
-	// ThemeDraculaPro is the Dracula Pro premium theme.
-	ThemeDraculaPro gothememe.Theme = themeDraculaProInstance
 	// ThemeDuckbones is the Duckbones theme.
 	ThemeDuckbones gothememe.Theme = themeDuckbonesInstance
 	// ThemeDuotoneDark is the Duotone Dark theme.

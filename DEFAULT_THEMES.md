@@ -24,7 +24,7 @@ for _, t := range themes.All() {
 | Preview | ID | Display Name | Type | Variable |
 |---------|----|--------------| ------|----------|
 | ![0x96f](themes/0x96f.svg) | `0x96f` | 0x96f | 🌙 Dark | `themes.ThemeN0x96f` |
-| ![12-bit Rainbow](themes/12-bit_rainbow.svg) | `12_bit_rainbow` | 12-bit Rainbow | 🌙 Dark | `themes.ThemeN12BitRainbow` |
+| ![12-bit Rainbow](themes/12_bit_rainbow.svg) | `12_bit_rainbow` | 12-bit Rainbow | 🌙 Dark | `themes.ThemeN12BitRainbow` |
 | ![3024 Day](themes/3024_day.svg) | `3024_day` | 3024 Day | ☀️ Light | `themes.ThemeN3024Day` |
 | ![3024 Night](themes/3024_night.svg) | `3024_night` | 3024 Night | 🌙 Dark | `themes.ThemeN3024Night` |
 | ![Aardvark Blue](themes/aardvark_blue.svg) | `aardvark_blue` | Aardvark Blue | 🌙 Dark | `themes.ThemeAardvarkBlue` |
@@ -137,7 +137,7 @@ for _, t := range themes.All() {
 | ![Doom Peacock](themes/doom_peacock.svg) | `doom_peacock` | Doom Peacock | 🌙 Dark | `themes.ThemeDoomPeacock` |
 | ![Dot Gov](themes/dot_gov.svg) | `dot_gov` | Dot Gov | 🌙 Dark | `themes.ThemeDotGov` |
 | ![Dracula+](themes/dracula.svg) | `dracula` | Dracula+ | 🌙 Dark | `themes.ThemeDracula` |
-| ![Dracula](themes/dracula.svg) | `dracula_2` | Dracula | 🌙 Dark | `themes.ThemeDracula2` |
+| ![Dracula](themes/dracula_2.svg) | `dracula_2` | Dracula | 🌙 Dark | `themes.ThemeDracula2` |
 | ![Duckbones](themes/duckbones.svg) | `duckbones` | Duckbones | 🌙 Dark | `themes.ThemeDuckbones` |
 | ![Duotone Dark](themes/duotone_dark.svg) | `duotone_dark` | Duotone Dark | 🌙 Dark | `themes.ThemeDuotoneDark` |
 | ![Duskfox](themes/duskfox.svg) | `duskfox` | Duskfox | 🌙 Dark | `themes.ThemeDuskfox` |
@@ -214,7 +214,7 @@ for _, t := range themes.All() {
 | ![Hivacruz](themes/hivacruz.svg) | `hivacruz` | Hivacruz | 🌙 Dark | `themes.ThemeHivacruz` |
 | ![Homebrew](themes/homebrew.svg) | `homebrew` | Homebrew | 🌙 Dark | `themes.ThemeHomebrew` |
 | ![Hopscotch](themes/hopscotch.svg) | `hopscotch` | Hopscotch | 🌙 Dark | `themes.ThemeHopscotch` |
-| ![Hopscotch.256](themes/hopscotch256.svg) | `hopscotch_256` | Hopscotch.256 | 🌙 Dark | `themes.ThemeHopscotch256` |
+| ![Hopscotch.256](themes/hopscotch_256.svg) | `hopscotch_256` | Hopscotch.256 | 🌙 Dark | `themes.ThemeHopscotch256` |
 | ![Horizon](themes/horizon.svg) | `horizon` | Horizon | 🌙 Dark | `themes.ThemeHorizon` |
 | ![Horizon Bright](themes/horizon_bright.svg) | `horizon_bright` | Horizon Bright | ☀️ Light | `themes.ThemeHorizonBright` |
 | ![Hot Dog Stand](themes/hot_dog_stand.svg) | `hot_dog_stand` | Hot Dog Stand | 🌙 Dark | `themes.ThemeHotDogStand` |

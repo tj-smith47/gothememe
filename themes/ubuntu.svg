@@ -1,1 +1,19 @@
-<svg xmlns='http://www.w3.org/2000/svg' width='400' height='80' viewBox='0 0 400 80'>  <title>Ubuntu color theme preview</title>  <rect x='0' y='0' width='50' height='80' fill='#300a24'/>  <rect x='50' y='0' width='50' height='80' fill='#eeeeec'/>  <line x1='50' y1='0' x2='50' y2='80' stroke='rgba(0,0,0,0.1
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="80" viewBox="0 0 400 80">
+  <title>Ubuntu color theme preview</title>
+  <rect x="0" y="0" width="50" height="80" fill="#300a24"/>
+  <rect x="50" y="0" width="50" height="80" fill="#eeeeec"/>
+  <line x1="50" y1="0" x2="50" y2="80" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <rect x="100" y="0" width="50" height="80" fill="#b5d5ff"/>
+  <line x1="100" y1="0" x2="100" y2="80" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <rect x="150" y="0" width="50" height="80" fill="#bbbbbb"/>
+  <line x1="150" y1="0" x2="150" y2="80" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <rect x="200" y="0" width="50" height="80" fill="#cc0000"/>
+  <line x1="200" y1="0" x2="200" y2="80" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <rect x="250" y="0" width="50" height="80" fill="#4e9a06"/>
+  <line x1="250" y1="0" x2="250" y2="80" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <rect x="300" y="0" width="50" height="80" fill="#3465a4"/>
+  <line x1="300" y1="0" x2="300" y2="80" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <rect x="350" y="0" width="50" height="80" fill="#c4a000"/>
+  <line x1="350" y1="0" x2="350" y2="80" stroke="rgba(0,0,0,0.1)" stroke-width="1"/>
+  <rect x="0" y="0" width="400" height="80" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1"/>
+</svg>

@@ -78,6 +78,12 @@ func (g *Generator) GenerateMarkdown(outputPath string) error {
 
 	svgGen := DefaultSVGPreview()
 
+	// Create themes directory for SVG files
+	themesDir := filepath.Join(filepath.Dir(outputPath), "themes")
+	if err := os.MkdirAll(themesDir, 0o755); err != nil { //nolint:gosec // G301: 0755 is intentional for output directory
+		return fmt.Errorf("creating themes directory: %w", err)
+	}
+
 	var themeInfos []themeInfo
 	for _, t := range g.themes {
 		id := toThemeID(t.Name)
@@ -99,15 +105,20 @@ func (g *Generator) GenerateMarkdown(outputPath string) error {
 			seenVarNames[varName] = 1
 		}
 
-		// Generate inline SVG preview
-		svgDataURI := svgGen.GenerateInline(t)
+		// Write SVG file and get path
+		svgPath := fmt.Sprintf("themes/%s.svg", id)
+		svgFilePath := filepath.Join(filepath.Dir(outputPath), svgPath)
+		svg := svgGen.Generate(t)
+		if err := os.WriteFile(svgFilePath, []byte(svg), 0o644); err != nil { //nolint:gosec // G306: 0644 is intentional for generated SVG
+			return fmt.Errorf("writing SVG for %s: %w", t.Name, err)
+		}
 
 		themeInfos = append(themeInfos, themeInfo{
 			ID:          id,
 			VarName:     varName,
 			DisplayName: t.Name,
 			IsDark:      isDarkTheme(t.Background),
-			SVGPreview:  svgDataURI,
+			SVGPreview:  svgPath,
 		})
 	}
 
@@ -162,7 +173,7 @@ func (g *Generator) generateThemeFile(t *WindowsTerminalTheme, seenIDs, seenVarN
 
 	instanceName := "theme" + varName + "Instance"
 	typeName := "theme" + varName
-	filename := "theme_" + id + ".go"
+	filename := id + ".go"
 
 	isDark := isDarkTheme(t.Background)
 

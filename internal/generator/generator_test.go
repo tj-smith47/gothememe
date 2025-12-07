@@ -570,7 +570,7 @@ func TestGenerate_ValidThemes(t *testing.T) {
 	}
 
 	// Check that files were created
-	files := []string{"theme_dracula.go", "theme_nord.go", "theme_gruvbox.go", "themes.go", "doc.go"}
+	files := []string{"dracula.go", "nord.go", "gruvbox.go", "themes.go", "doc.go"}
 	for _, f := range files {
 		path := filepath.Join(outputDir, f)
 		if _, err := os.Stat(path); os.IsNotExist(err) {
@@ -608,11 +608,11 @@ func TestGenerate_DuplicateIds(t *testing.T) {
 	}
 
 	// Check both files exist with different names
-	if _, err := os.Stat(filepath.Join(outputDir, "theme_test_theme.go")); os.IsNotExist(err) {
-		t.Error("expected theme_test_theme.go to exist")
+	if _, err := os.Stat(filepath.Join(outputDir, "test_theme.go")); os.IsNotExist(err) {
+		t.Error("expected test_theme.go to exist")
 	}
-	if _, err := os.Stat(filepath.Join(outputDir, "theme_test_theme_2.go")); os.IsNotExist(err) {
-		t.Error("expected theme_test_theme_2.go to exist")
+	if _, err := os.Stat(filepath.Join(outputDir, "test_theme_2.go")); os.IsNotExist(err) {
+		t.Error("expected test_theme_2.go to exist")
 	}
 }
 
@@ -776,7 +776,7 @@ func TestGenerateThemeFile_Success(t *testing.T) {
 	}
 
 	// Verify file exists and is valid Go
-	path := filepath.Join(outputDir, "theme_dracula.go")
+	path := filepath.Join(outputDir, "dracula.go")
 	content := testReadFile(t, path)
 
 	if !strings.Contains(string(content), "package themes") {
