@@ -108,8 +108,3 @@ formatters:
         - standard
         - default
         - prefix(github.com/tj-smith47/gothememe)
-
-issues:
-  # Exclude generated themes directory
-  exclude-dirs:
-    - themes
