@@ -67,7 +67,7 @@ release:
 
     ## What's Changed
 
-    See the [CHANGELOG](https://github.com/tj-smith47/gothememe/blob/main/CHANGELOG.md) for details.
+    See the [CHANGELOG](https://github.com/tj-smith47/gothememe/blob/master/CHANGELOG.md) for details.
 
 source:
   enabled: true
@@ -75,15 +75,3 @@ source:
 
 sboms:
   - artifacts: archive
-
-signs:
-  - cmd: cosign
-    signature: "${artifact}.sig"
-    certificate: "${artifact}.pem"
-    args:
-      - sign-blob
-      - "--output-signature=${signature}"
-      - "--output-certificate=${certificate}"
-      - "${artifact}"
-      - "--yes"
-    artifacts: checksum
