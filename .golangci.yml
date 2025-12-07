@@ -1,0 +1,113 @@
+version: "2"
+
+run:
+  timeout: 5m
+  concurrency: 4
+  allow-parallel-runners: true
+
+linters:
+  enable:
+    # Core linters
+    - errcheck
+    - govet
+    - unused
+    - ineffassign
+    - staticcheck
+
+    # Style & complexity
+    # goconst disabled - test files and switch cases benefit from inline strings for clarity
+    - gocritic
+    - revive
+    - gocyclo
+
+    # Bug prevention
+    - bodyclose
+    - errorlint
+    - nilerr
+    - wastedassign
+
+    # Security
+    - gosec
+
+    # Testing
+    - paralleltest
+    - thelper
+    - tparallel
+
+  settings:
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+
+    errorlint:
+      errorf: true
+      asserts: true
+      comparison: true
+
+    gocritic:
+      enabled-tags:
+        - diagnostic
+        - style
+        - performance
+        - opinionated
+      disabled-checks:
+        - hugeParam
+        - rangeValCopy
+
+    revive:
+      severity: warning
+      rules:
+        - name: var-naming
+          severity: warning
+        - name: package-comments
+          severity: warning
+        - name: exported
+          severity: warning
+
+    gosec:
+      severity: medium
+      confidence: medium
+
+    thelper:
+      benchmark:
+        first: true
+        name: true
+        begin: true
+      fuzz:
+        first: true
+        name: true
+        begin: true
+      tb:
+        first: true
+        name: true
+        begin: true
+
+    gocyclo:
+      # deriveMissingColors (61) and applyOverride (43) in builder.go legitimately
+      # need high complexity to handle all color derivation cases
+      min-complexity: 65
+
+    paralleltest:
+      ignore-missing: false
+      ignore-missing-subtests: false
+
+formatters:
+  enable:
+    - gofmt
+    - goimports
+    - gci
+
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/tj-smith47/gothememe
+    gci:
+      sections:
+        - standard
+        - default
+        - prefix(github.com/tj-smith47/gothememe)
+
+issues:
+  # Exclude generated themes directory
+  exclude-dirs:
+    - themes

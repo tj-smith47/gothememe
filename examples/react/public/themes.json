@@ -1,0 +1,52 @@
+[
+  {
+    "id": "dracula",
+    "displayName": "Dracula+",
+    "isDark": true
+  },
+  {
+    "id": "nord",
+    "displayName": "Nord",
+    "isDark": true
+  },
+  {
+    "id": "gruvbox_dark",
+    "displayName": "Gruvbox Dark",
+    "isDark": true
+  },
+  {
+    "id": "atom_one_dark",
+    "displayName": "Atom One Dark",
+    "isDark": true
+  },
+  {
+    "id": "builtin_solarized_light",
+    "displayName": "Builtin Solarized Light",
+    "isDark": false
+  },
+  {
+    "id": "builtin_solarized_dark",
+    "displayName": "Builtin Solarized Dark",
+    "isDark": true
+  },
+  {
+    "id": "catppuccin_mocha",
+    "displayName": "Catppuccin Mocha",
+    "isDark": true
+  },
+  {
+    "id": "tokyonight",
+    "displayName": "TokyoNight",
+    "isDark": true
+  },
+  {
+    "id": "github_dark",
+    "displayName": "GitHub Dark",
+    "isDark": true
+  },
+  {
+    "id": "monokai_pro",
+    "displayName": "Monokai Pro",
+    "isDark": true
+  }
+]

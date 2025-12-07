@@ -1,0 +1,103 @@
+name: Auto Tag
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  auto-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get commit message
+        id: commit
+        run: |
+          # Get the commit message or PR title
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "message=$COMMIT_MSG" >> $GITHUB_OUTPUT
+
+          # Determine bump type from commit message
+          if [[ "$COMMIT_MSG" == *"#none"* ]]; then
+            echo "bump=none" >> $GITHUB_OUTPUT
+          elif [[ "$COMMIT_MSG" == *"#major"* ]]; then
+            echo "bump=major" >> $GITHUB_OUTPUT
+          elif [[ "$COMMIT_MSG" == *"#minor"* ]]; then
+            echo "bump=minor" >> $GITHUB_OUTPUT
+          elif [[ "$COMMIT_MSG" == *"#patch"* ]]; then
+            echo "bump=patch" >> $GITHUB_OUTPUT
+          else
+            # Default to patch if no tag specified
+            echo "bump=patch" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get latest tag
+        id: latest_tag
+        run: |
+          # Get the latest tag, default to v0.0.0 if none exists
+          LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+          echo "Latest tag: $LATEST_TAG"
+
+      - name: Calculate next version
+        id: next_version
+        if: steps.commit.outputs.bump != 'none'
+        run: |
+          LATEST_TAG="${{ steps.latest_tag.outputs.tag }}"
+          BUMP="${{ steps.commit.outputs.bump }}"
+
+          # Remove 'v' prefix for calculation
+          VERSION=${LATEST_TAG#v}
+
+          # Split into major.minor.patch
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION"
+
+          # Default to 0 if empty
+          MAJOR=${MAJOR:-0}
+          MINOR=${MINOR:-0}
+          PATCH=${PATCH:-0}
+
+          # Calculate next version
+          case $BUMP in
+            major)
+              MAJOR=$((MAJOR + 1))
+              MINOR=0
+              PATCH=0
+              ;;
+            minor)
+              MINOR=$((MINOR + 1))
+              PATCH=0
+              ;;
+            patch)
+              PATCH=$((PATCH + 1))
+              ;;
+          esac
+
+          NEXT_VERSION="v${MAJOR}.${MINOR}.${PATCH}"
+          echo "version=$NEXT_VERSION" >> $GITHUB_OUTPUT
+          echo "Next version: $NEXT_VERSION (bump: $BUMP)"
+
+      - name: Create and push tag
+        if: steps.commit.outputs.bump != 'none'
+        run: |
+          NEXT_VERSION="${{ steps.next_version.outputs.version }}"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git tag -a "$NEXT_VERSION" -m "Release $NEXT_VERSION"
+          git push origin "$NEXT_VERSION"
+
+          echo "Created and pushed tag: $NEXT_VERSION"
+
+      - name: Skip tagging
+        if: steps.commit.outputs.bump == 'none'
+        run: |
+          echo "Skipping tag creation due to #none in commit message"

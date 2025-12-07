@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dracula">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoThemeMe - Vanilla Example</title>
+    <link rel="stylesheet" href="/themes.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--theme-background);
+            color: var(--theme-text-primary);
+            min-height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: var(--theme-accent);
+            margin-bottom: 1rem;
+        }
+
+        .theme-selector {
+            background: var(--theme-surface);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--theme-border);
+        }
+
+        .theme-selector label {
+            color: var(--theme-text-secondary);
+            margin-right: 1rem;
+        }
+
+        .theme-selector select {
+            background: var(--theme-background);
+            color: var(--theme-text-primary);
+            border: 1px solid var(--theme-border);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .card {
+            background: var(--theme-surface);
+            border: 1px solid var(--theme-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h2 {
+            color: var(--theme-text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: var(--theme-text-secondary);
+        }
+
+        .button {
+            background: var(--theme-accent);
+            color: var(--theme-text-inverted);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+        .button:hover {
+            opacity: 0.9;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-success {
+            background: var(--theme-success-background);
+            border: 1px solid var(--theme-success-border);
+            color: var(--theme-success-text);
+        }
+
+        .alert-warning {
+            background: var(--theme-warning-background);
+            border: 1px solid var(--theme-warning-border);
+            color: var(--theme-warning-text);
+        }
+
+        .alert-error {
+            background: var(--theme-error-background);
+            border: 1px solid var(--theme-error-border);
+            color: var(--theme-error-text);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .color-swatch {
+            height: 60px;
+            border-radius: 4px;
+            display: flex;
+            align-items: flex-end;
+            padding: 0.25rem;
+            font-size: 0.7rem;
+            border: 1px solid var(--theme-border);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>GoThemeMe Demo</h1>
+
+        <div class="theme-selector">
+            <label for="theme">Select Theme:</label>
+            <select id="theme" onchange="changeTheme(this.value)">
+                <!-- Populated by JavaScript -->
+            </select>
+        </div>
+
+        <div class="alert alert-success">
+            Success message example
+        </div>
+
+        <div class="alert alert-warning">
+            Warning message example
+        </div>
+
+        <div class="alert alert-error">
+            Error message example
+        </div>
+
+        <div class="card">
+            <h2>Card Title</h2>
+            <p>This is a card component using theme colors. The background uses the surface color, and text uses primary and secondary text colors.</p>
+            <button class="button">Action Button</button>
+        </div>
+
+        <div class="card">
+            <h2>Theme Colors</h2>
+            <div class="color-grid" id="colors">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load themes from server
+        fetch('/themes.json')
+            .then(r => r.json())
+            .then(themes => {
+                const select = document.getElementById('theme');
+                const saved = localStorage.getItem('theme') || 'dracula';
+
+                themes.forEach(t => {
+                    const opt = document.createElement('option');
+                    opt.value = t.id;
+                    opt.textContent = t.name + (t.dark ? ' (Dark)' : ' (Light)');
+                    if (t.id === saved) opt.selected = true;
+                    select.appendChild(opt);
+                });
+
+                changeTheme(saved);
+            });
+
+        function changeTheme(id) {
+            document.documentElement.setAttribute('data-theme', id);
+            localStorage.setItem('theme', id);
+            updateColorGrid();
+        }
+
+        function updateColorGrid() {
+            const colors = [
+                { var: '--theme-background', name: 'Background' },
+                { var: '--theme-surface', name: 'Surface' },
+                { var: '--theme-text-primary', name: 'Text' },
+                { var: '--theme-accent', name: 'Accent' },
+                { var: '--theme-success-text', name: 'Success' },
+                { var: '--theme-warning-text', name: 'Warning' },
+                { var: '--theme-error-text', name: 'Error' },
+            ];
+
+            const grid = document.getElementById('colors');
+            grid.innerHTML = '';
+
+            const style = getComputedStyle(document.documentElement);
+            colors.forEach(c => {
+                const swatch = document.createElement('div');
+                swatch.className = 'color-swatch';
+                swatch.style.background = `var(${c.var})`;
+                swatch.textContent = c.name;
+                swatch.style.color = c.var.includes('text') || c.var.includes('accent')
+                    ? 'var(--theme-background)'
+                    : 'var(--theme-text-primary)';
+                grid.appendChild(swatch);
+            });
+        }
+    </script>
+</body>
+</html>
