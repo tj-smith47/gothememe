@@ -10,7 +10,7 @@ A comprehensive Go theming package for web applications. The web counterpart to 
 
 ## Features
 
-- **128+ Built-in Themes** - Dracula, Nord, Gruvbox, Tokyo Night, Catppuccin, and more
+- **450+ Built-in Themes** - Dracula, Nord, Gruvbox, Tokyo Night, Catppuccin, and more
 - **Multiple Output Formats** - CSS variables, SCSS, JSON, DTCG design tokens
 - **Syntax Highlighting** - Compatible with Prism.js, Highlight.js, and Chroma
 - **WCAG Accessibility** - Built-in contrast ratio validation

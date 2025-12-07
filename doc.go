@@ -1,6 +1,6 @@
 // Package gothememe provides a comprehensive theming system for web applications.
 //
-// GoThemeMe is the web counterpart to [bubbletint], offering 128+ pre-built themes
+// GoThemeMe is the web counterpart to [bubbletint], offering 450+ pre-built themes
 // with full CSS variable support, syntax highlighting, and WCAG accessibility
 // validation. It generates CSS custom properties, SCSS variables, JSON, and
 // DTCG-compliant design tokens.

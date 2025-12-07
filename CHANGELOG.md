@@ -43,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Pre-built Themes
 - 451 themes from iTerm2-Color-Schemes
+- Dracula Pro theme (premium dark variant)
 - Automatic dark/light mode detection
 - Full ANSI 16-color support
 - Code syntax highlighting colors
@@ -74,7 +75,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Zero external runtime dependencies (stdlib only)
 - golangci-lint clean with strict settings
 - Parallel test execution throughout
-- 70%+ test coverage
+- 95%+ test coverage (99.5% overall with subpackages)
+- Code generation with go:generate for ThemeBuilder setter methods
 
 ### Theme Categories
 
