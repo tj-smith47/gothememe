@@ -4,8 +4,6 @@ run:
   timeout: 5m
   concurrency: 4
   allow-parallel-runners: true
-  skip-dirs:
-    - themes
 
 linters:
   enable:
@@ -35,6 +33,10 @@ linters:
     - paralleltest
     - thelper
     - tparallel
+
+  exclusions:
+    paths:
+      - themes/
 
   settings:
     errcheck:

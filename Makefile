@@ -33,7 +33,7 @@ prepare:
 	go mod verify
 
 tools:
-	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+	go install github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.7.1
 	go install golang.org/x/tools/cmd/goimports@latest
 	go install golang.org/x/tools/cmd/stringer@latest
 
