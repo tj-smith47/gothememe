@@ -1,6 +1,6 @@
 # Default Themes
 
-GoThemeMe includes **451** pre-built themes sourced from [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes).
+GoThemeMe includes **452** pre-built themes sourced from [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes) plus premium themes.
 
 ## Usage
 
@@ -138,6 +138,7 @@ for _, t := range themes.All() {
 | ![Dot Gov](themes/dot_gov.svg) | `dot_gov` | Dot Gov | 🌙 Dark | `themes.ThemeDotGov` |
 | ![Dracula+](themes/dracula.svg) | `dracula` | Dracula+ | 🌙 Dark | `themes.ThemeDracula` |
 | ![Dracula](themes/dracula_2.svg) | `dracula_2` | Dracula | 🌙 Dark | `themes.ThemeDracula2` |
+| ![Dracula Pro](themes/dracula_pro.svg) | `dracula_pro` | Dracula Pro | 🌙 Dark | `themes.ThemeDraculaPro` |
 | ![Duckbones](themes/duckbones.svg) | `duckbones` | Duckbones | 🌙 Dark | `themes.ThemeDuckbones` |
 | ![Duotone Dark](themes/duotone_dark.svg) | `duotone_dark` | Duotone Dark | 🌙 Dark | `themes.ThemeDuotoneDark` |
 | ![Duskfox](themes/duskfox.svg) | `duskfox` | Duskfox | 🌙 Dark | `themes.ThemeDuskfox` |
