@@ -1,6 +1,5 @@
-// Dracula Pro theme - Manual implementation
-// Based on the official Dracula Pro color palette
-
+// Package themes provides the Dracula Pro theme implementation.
+// Dracula Pro is a premium dark theme with a darker background variant.
 package themes
 
 import "github.com/tj-smith47/gothememe"
@@ -37,8 +36,12 @@ func (t *themeDraculaPro) AccentSecondary() gothememe.Color { return gothememe.H
 func (t *themeDraculaPro) Brand() gothememe.Color           { return gothememe.Hex("#bd93f9") }
 
 // Border colors
-func (t *themeDraculaPro) Border() gothememe.Color       { return gothememe.Hex("#bd93f9").WithAlpha(0.55) } // BorderAccent
-func (t *themeDraculaPro) BorderSubtle() gothememe.Color { return gothememe.Hex("#bd93f9").WithAlpha(0.35) }
+func (t *themeDraculaPro) Border() gothememe.Color {
+	return gothememe.Hex("#bd93f9").WithAlpha(0.55)
+} // BorderAccent
+func (t *themeDraculaPro) BorderSubtle() gothememe.Color {
+	return gothememe.Hex("#bd93f9").WithAlpha(0.35)
+}
 func (t *themeDraculaPro) BorderStrong() gothememe.Color { return gothememe.Hex("#f8f8f2") }
 
 // Semantic colors
