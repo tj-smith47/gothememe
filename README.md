@@ -254,6 +254,10 @@ GoThemeMe works with any web framework. See [docs/INTEGRATION.md](docs/INTEGRATI
 
 Contributions are welcome! See [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines.
 
+## Disclaimer
+
+Generated entirely by Claude Opus 4.5 over many iterations 🤖
+
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
