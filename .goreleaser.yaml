@@ -71,6 +71,3 @@ release:
 source:
   enabled: true
   name_template: "{{ .ProjectName }}_{{ .Version }}_source"
-
-sboms:
-  - artifacts: archive
