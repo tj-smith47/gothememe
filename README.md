@@ -1,4 +1,6 @@
-# GoThemeMe
+<h1 align="centeR">
+	Go • Theme • Me
+</h1>
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/tj-smith47/gothememe.svg)](https://pkg.go.dev/github.com/tj-smith47/gothememe)
 [![CI](https://github.com/tj-smith47/gothememe/actions/workflows/ci.yml/badge.svg)](https://github.com/tj-smith47/gothememe/actions/workflows/ci.yml)
