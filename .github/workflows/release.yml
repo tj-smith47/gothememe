@@ -1,80 +1,45 @@
-name: Release
+name: GoReleaser
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_dispatch:
+  workflow_run:
+    workflows:
+      - "AutoTag"
+    branches:
+      - master
+    types:
+      - completed
 
 permissions:
   contents: write
+  pull-requests: read
 
 jobs:
-  check-skip:
-    runs-on: ubuntu-latest
-    outputs:
-      skip: ${{ steps.check.outputs.skip }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Check for skip release
-        id: check
-        run: |
-          # Get the commit that this tag points to
-          TAG_COMMIT=$(git rev-list -n 1 ${{ github.ref_name }})
-
-          # Get the commit message
-          COMMIT_MSG=$(git log -1 --pretty=%B $TAG_COMMIT)
-
-          # Check if this commit is a merge commit and get the PR title
-          if git log -1 --pretty=%B $TAG_COMMIT | grep -q "Merge pull request"; then
-            # Extract PR number and get PR title via git log
-            PR_TITLE=$(git log -1 --pretty=%B $TAG_COMMIT | head -1)
-            COMMIT_MSG="$PR_TITLE"
-          fi
-
-          echo "Commit message: $COMMIT_MSG"
-
-          # Check for [skip release] in the message
-          if [[ "$COMMIT_MSG" == *"[skip release]"* ]]; then
-            echo "skip=true" >> $GITHUB_OUTPUT
-            echo "Skipping release due to [skip release] in commit/PR title"
-          else
-            echo "skip=false" >> $GITHUB_OUTPUT
-          fi
-
-  release:
-    needs: check-skip
-    if: needs.check-skip.outputs.skip != 'true'
+  goreleaser:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          path: .
 
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.25.5'
+          go-version: 1.25.5
           cache: true
+
+      - name: Get PR
+        uses: 8BitJonny/gh-get-current-pr@3.0.0
+        id: pr
 
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
+        if: ${{ !contains(steps.pr.outputs.pr_title, 'skip-release') && !contains(steps.pr.outputs.pr_title, 'skip release') }}
         with:
           distribution: goreleaser
-          version: '~> v2'
+          version: latest
           args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  skip-release:
-    needs: check-skip
-    if: needs.check-skip.outputs.skip == 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Skip release
-        run: |
-          echo "Release skipped due to [skip release] in PR title"
