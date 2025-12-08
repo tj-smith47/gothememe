@@ -44,7 +44,6 @@ checksum:
 
 changelog:
   sort: asc
-  use: conventional
   filters:
     exclude:
       - "^docs:"
