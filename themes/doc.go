@@ -3,7 +3,7 @@
 // Package themes provides 452+ pre-built color themes for gothememe.
 //
 // Themes are sourced from the iTerm2-Color-Schemes repository and include
-// popular themes like Dracula, Dracula Pro, Nord, Gruvbox, Tokyo Night, Catppuccin, and more.
+// popular themes like Dracula, Nord, Gruvbox, Tokyo Night, Catppuccin, and more.
 //
 // # Usage
 //

@@ -1,6 +1,6 @@
 # Default Themes
 
-GoThemeMe includes **452** pre-built themes sourced from [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes) plus premium themes.
+GoThemeMe includes **452** pre-built themes sourced from [iTerm2-Color-Schemes](https://github.com/mbadolato/iTerm2-Color-Schemes).
 
 ## Usage
 
