@@ -8,6 +8,8 @@
 [![Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tj-smith47/gothememe/badges/coverage.json)](https://github.com/tj-smith47/gothememe/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+<a href="https://www.buymeacoffee.com/tjsmith47" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
 A comprehensive Go theming package for web applications. The web counterpart to [bubbletint](https://github.com/lrstanley/bubbletint).
 
 ## Features

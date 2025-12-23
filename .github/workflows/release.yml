@@ -34,12 +34,28 @@ jobs:
         uses: 8BitJonny/gh-get-current-pr@3.0.0
         id: pr
 
+      - name: Check Run Conditions
+        shell: bash {0}
+        id: release
+        env:
+          SKIP_RELEASE: ${{ contains(steps.pr.outputs.pr_title, 'skip-release') || contains(steps.pr.outputs.pr_title, 'skip release') }}
+        run: |
+          should_run=true
+          # Skip if PR title contains skip-release
+          [[ ${SKIP_RELEASE} == 'true' ]] && should_run=false
+          # Skip if no tag points to HEAD (AutoTag skipped due to #none in commit)
+          if ! git tag --points-at HEAD | grep -q .; then
+            echo "No tag at HEAD - AutoTag likely skipped (commit has #none)"
+            should_run=false
+          fi
+          echo "should_run=${should_run}" >>$GITHUB_OUTPUT
+
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v6
-        if: ${{ !contains(steps.pr.outputs.pr_title, 'skip-release') && !contains(steps.pr.outputs.pr_title, 'skip release') }}
+        if: ${{ steps.release.outputs.should_run == 'true' }}
         with:
           distribution: goreleaser
           version: latest
           args: release --clean
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
