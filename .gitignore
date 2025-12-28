@@ -1,5 +1,7 @@
 # Binaries
 bin/
+themegen
+syntaxgen
 *.exe
 *.exe~
 *.dll

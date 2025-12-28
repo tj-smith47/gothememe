@@ -230,6 +230,42 @@ meetsAAA := contrast.MeetsAAAHex("#f8f8f2", "#282a36", false) // true
 level := contrast.CheckHex("#f8f8f2", "#282a36") // contrast.LevelAAA
 ```
 
+## CLI Tools
+
+### syntaxgen
+
+Generate syntax highlighting CSS for use with Hugo, Chroma, Prism.js, or Highlight.js:
+
+```bash
+# Generate Chroma CSS for Dracula Pro (default)
+syntaxgen > syntax.css
+
+# Generate for a specific theme and format
+syntaxgen -theme nord -format prism -output nord-prism.css
+
+# List all available themes
+syntaxgen -list
+
+# Use CSS variables instead of inline colors
+syntaxgen -theme catppuccin_mocha -variables > syntax.css
+```
+
+**Flags:**
+- `-theme` - Theme ID (default: `dracula_pro`)
+- `-format` - Output format: `chroma`, `prism`, `highlightjs` (default: `chroma`)
+- `-output` - Output file (default: stdout)
+- `-variables` - Use CSS variables instead of inline colors
+- `-minify` - Minify output
+- `-list` - List available themes
+
+### themegen
+
+Regenerate Go theme source files from iTerm2-Color-Schemes:
+
+```bash
+themegen -source iterm2 -output themes
+```
+
 ## Available Themes
 
 See [DEFAULT_THEMES.md](DEFAULT_THEMES.md) for a complete list of themes with previews.

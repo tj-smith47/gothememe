@@ -22,6 +22,7 @@ bench:
 build:
 	go build -v ./...
 	go build -v -o bin/themegen ./cmd/themegen
+	go build -v -o bin/syntaxgen ./cmd/syntaxgen
 
 clean:
 	rm -rf bin/ coverage.out

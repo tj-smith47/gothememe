@@ -27,6 +27,26 @@ builds:
     flags:
       - -trimpath
 
+  - id: syntaxgen
+    main: ./cmd/syntaxgen
+    binary: syntaxgen
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w
+      - -X main.Version={{.Version}}
+      - -X main.Commit={{.Commit}}
+      - -X main.Date={{.Date}}
+    flags:
+      - -trimpath
+
 archives:
   - format: tar.gz
     format_overrides:
